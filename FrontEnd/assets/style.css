@@ -186,3 +186,45 @@ footer nav ul {
 	margin: 2em
 }
 
+/***** Boutons filtres travaux *****/
+
+#portfolio .btn-filters {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2em;
+	height: 37px;
+}
+
+.btn-filters button {
+	border-radius: 60px;
+	border: 1px #1D6154 solid;
+	color: #1D6154;
+	
+	margin-right: 20px;
+	font-weight: 700;
+	font-size: 16px;
+	text-align: center;
+	font-family: 'Syne';
+	background-color: transparent;
+}
+
+.btn-filters button.active {
+	background-color: #1D6154;
+	color:white
+}
+
+.btn-filters .all-works {
+	width: 8.8%;
+}
+
+.btn-filters .objets-btn {
+	width: 8.8%;
+}
+
+.btn-filters .appartements-btn {
+	width: 13.8%;
+}
+
+.btn-filters .hotels-restaurants-btn {
+	width: 17.4%;
+}
