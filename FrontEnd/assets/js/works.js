@@ -20,7 +20,7 @@ let works = [];
 const containerGallery = document.querySelector(".gallery");
 
 fetch('http://localhost:5678/api/works', {
-    method: 'GET',
+    method: "GET",
     headers: {"Content-Type": "application/json"},
 })
     .then(response => response.json())
