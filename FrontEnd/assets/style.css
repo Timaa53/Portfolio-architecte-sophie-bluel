@@ -52,6 +52,7 @@ body {
 	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
+	background-color: #FFFEF8;
 }
 header {
 	display: flex;
@@ -242,10 +243,21 @@ footer nav ul {
 
 /***** Page de connection *****/
 
+body.page-connection {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+body.page-connection .login {
+	font-weight: 700;
+}
+
 body.page-connection main {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	flex: 1;
 }
 
 body.page-connection main h2 {
@@ -253,7 +265,57 @@ body.page-connection main h2 {
 }
 
 body.page-connection main form {
+	width: 33.3%;
 	display: flex;
 	flex-direction: column;
 	margin-top: 69px;
 }
+
+body.page-connection main form label {
+	font-weight: 500;
+}
+
+body.page-connection main form input {
+	height: 41px;
+	margin-bottom: 30px;
+}
+
+body.page-connection main form button {
+	margin-bottom: 30px;
+	border-radius: 60px;
+	height: 36px;
+	width: 47.2%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 26.4%;
+	
+	font-weight: 700;
+	font-family: "Syne";
+	color: white;
+	background-color: #1D6154;
+	border: 1px #1D6154 solid;
+}
+
+body.page-connection main p {
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+body.page-connection footer {
+	max-width: 1440px;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: white;
+}
+
+body.page-connection footer nav ul {
+	padding-right: 30px;
+}
+
