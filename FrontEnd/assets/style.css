@@ -224,21 +224,21 @@ footer nav ul {
 	color:white
 }
 
-.btn-filters .all-works {
+.btn-filters .Tous {
 	width: 8.8%;
 }
 
-.btn-filters .objets-btn {
+.btn-filters .Objets {
 	width: 8.8%;
 }
 
-.btn-filters .appartements-btn {
+.btn-filters .Appartements {
 	width: 13.8%;
 }
 
-.btn-filters .hotels-restaurants-btn {
+/* .btn-filters .Hotels\ \&\ restaurants {
 	width: 17.4%;
-}
+} */
 
 
 /***** Page de connection *****/

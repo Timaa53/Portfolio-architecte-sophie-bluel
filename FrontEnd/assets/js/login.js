@@ -21,3 +21,8 @@ formListener.addEventListener("submit", async (event) => {
 });
 
 // revoir le code depuis ligne 9 + cours "Sauvegardez les données grâce à une API HTTP"
+
+
+ // for (let i = 0; i < works.length; i++) {
+    //     buttons.appendChild(creerFiltreBouton(works[i]));
+    // }
