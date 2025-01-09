@@ -1,28 +1,34 @@
 const formListener = document.querySelector(".formulaire");
 
 formListener.addEventListener("submit", async (event) => {
-    const email = document.getElementById("email").value;
-    const motDePasse = document.getElementById("password").value;
+    event.preventDefault();
 
-    const emailMdp = {"email": email, "motDePasse": motDePasse};
+    const emailMdp = {
+        email: event.target.querySelector("[name=email]").value,
+        password: event.target.querySelector("[name=password]").value,
+    }
 
-    const response = await fetch("http://localhost:5678/api/users/login", {
+
+    fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(emailMdp)
-    });
+    })
 
-    if (response.ok) {
-        const infosResponse = await response.json();
-        console.log("ok", infosResponse)
-    }else{
-        console.log("erreur")
-    }
+    .then(response => {
+        if (!response.ok) {
+          // Erreur dans la connexion
+          throw new Error("Erreur dans l'identifiant ou le mot de passe");
+        }
+        return response.json();
+    })
+      .then(data => {
+        // Stockage token et redirection homepage
+        localStorage.setItem('token', data.token);
+        window.location.href = "/FrontEnd/index.html";
+      })
+      .catch(error => {
+        alert(error.message);
+        });
 });
 
-// revoir le code depuis ligne 9 + cours "Sauvegardez les données grâce à une API HTTP"
-
-
- // for (let i = 0; i < works.length; i++) {
-    //     buttons.appendChild(creerFiltreBouton(works[i]));
-    // }
