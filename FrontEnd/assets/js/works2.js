@@ -1,13 +1,11 @@
 // Fichier temporaire, brouillon
 
 
-
-
 // Fonctions
     //Création de figures
     export function creerFigure(work) {
         let figure = document.createElement("figure");
-        figure.classList.add(`category${work.category.id}`)
+        figure.id = (`${work.category.id}`)
         let img = document.createElement("img");
         img.src = work.imageUrl;
         img.alt = work.title;
@@ -17,67 +15,63 @@
         title.innerText = work.title;
         figure.appendChild(title);
     
+        const containerGallery = document.querySelector(".gallery");
         containerGallery.appendChild(figure);
         return figure
     }
     
         //Création de boutons
-    export function creerFiltreBouton (work) {
+    export function creerFiltreBouton (category) {
         let button = document.createElement("button");
-        button.textContent = work;
-        button.className = work;
-        button.dataset.id = work.id;
+        button.textContent = category.name;
+        button.className = category.name;
+        button.dataset.id = category.id;
 
         const buttons = document.querySelector(".btn-filters");
         buttons.appendChild(button);
         return button
     };
 
-// variables globales
-let works = [];
-let categoriesNames = []; // Tableau des catégories par noms
-let categoriesId = []; // Tableau des catégories par ID
-const containerGallery = document.querySelector(".gallery");
-
 
 // Récupération et affichage dynamique des travaux
 fetch('http://localhost:5678/api/works',)
 .then(response => response.json())
 .then((data) => {
-    works = data;
-    
+    let works = [data];
+
     for (const work of data){
-        containerGallery.appendChild(creerFigure(work));
+        creerFigure(work);
     }
 })
 .catch(error => console.error(error)); 
 
-// Récupération des catégories et création des boutons
+
+// Récupération des catégories, création des boutons et tri des travaux
 fetch('http://localhost:5678/api/categories',)
 .then(response => response.json())
 .then((data) => {
-    categoriesNames = ["Tous", ...data.map(elementName => elementName.name)];
-    categoriesId = (data.map(elementId => elementId.id));
+    const categories = [{ id: null, name: "Tous" }, ...data];
+    const figures = document.querySelectorAll(".gallery figure");
 
-    for (const button of categoriesNames) {
-        const allButtons = creerFiltreBouton(button)
+    for (const category of categories) {
+        const buttonsFilter = creerFiltreBouton(category)
 
-        allButtons.addEventListener("click", () => {
+        buttonsFilter.addEventListener("click", () => {
             const ButtonSelector = document.querySelectorAll(".btn-filters button");
 
             // Modification dynamique des styles des boutons au clic
             for (const btn of ButtonSelector) {
                 btn.classList.remove("active");
             }
-            allButtons.classList.add("active");
-//------------------------------------------------------------------------------------
-            const figures = document.querySelectorAll("figure"); 
+            buttonsFilter.classList.add("active");
 
-        // Filtrer des figures en fonction de l'ID du bouton
+            // Tri dynamique des travaux
             for (const figure of figures) {
-                if (button.dataset.id !== figure.dataset.id) {
+                if (category.id === null || figure.id === String(category.id)) {
+                    figure.style.display = "block";
+                } else {
                     figure.style.display = "none";
-                }
+                };
             };
         });
     };
