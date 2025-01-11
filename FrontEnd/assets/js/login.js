@@ -16,10 +16,7 @@ formListener.addEventListener("submit", async (event) => {
     })
 
     .then(response => {
-        if (!response.ok) {
-          // Erreur dans la connexion
-          throw new Error("Erreur dans l'identifiant ou le mot de passe");
-        }
+        if (!response.ok) {throw new Error("Erreur dans l'identifiant ou le mot de passe");}
         return response.json();
     })
       .then(data => {
@@ -27,8 +24,5 @@ formListener.addEventListener("submit", async (event) => {
         localStorage.setItem('token', data.token);
         window.location.href = "/FrontEnd/index.html";
       })
-      .catch(error => {
-        alert(error.message);
-        });
+      .catch(error => {alert(error.message);});
 });
-

@@ -1,3 +1,8 @@
+// Fichier temporaire, brouillon
+
+
+
+
 // Fonctions
     //Création de figures
     export function creerFigure(work) {
