@@ -191,6 +191,16 @@ input[type="submit"]{
 	border-radius: 60px ;
 }
 
+footer {
+	width: 1440px;
+	display: flex;
+	left: 50%;
+	transform: translateX(-50%);
+	position: relative;
+	justify-content: end;
+    background-color: white;
+}
+
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
@@ -237,7 +247,7 @@ footer nav ul {
 }
 
 
-/***** Page de connection *****/
+/********** Page de connection **********/
 
 body.page-connection {
 	display: flex;
@@ -315,31 +325,39 @@ body.page-connection footer nav ul {
 	padding-right: 30px;
 }
 
-/***** Page administrateur *****/
 
-body.page-admin i {
-/* a voir si utile */
-}
+/********** Page administrateur **********/
 
 /** Top Bar **/
 body.page-admin .editionmode-topbar {
 	background-color: black;
 	color: white;
+	width: 1440px;
+	height: 59px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	text-indent: 10px;
+
+	position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
-body.page-admin .editionmode-topbar i {
-
+body.page-admin .portfolio-modal {
+	display: flex;
+	justify-content: center;
 }
 
-body.page-admin .editionmode-topbar p {
+body.page-admin .portfolio-modal a {
+	margin-left: 20px;
+	display: flex;
+	text-indent: 10px;
+	align-items: baseline;
 
+	text-decoration: none;
+	color: inherit;
+	margin-top: 8px;
+	height: 18px;
 }
-
-body.page-admin #portfolio i {
-
-}
-
-body.page-admin #portfolio p {
-
-}
-
