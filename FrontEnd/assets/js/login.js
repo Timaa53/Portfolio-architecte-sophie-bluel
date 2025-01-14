@@ -22,7 +22,7 @@ formListener.addEventListener("submit", async (event) => {
       .then(data => {
         // Stockage token et redirection homepage
         localStorage.setItem('token', data.token);
-        window.location.href = "/FrontEnd/index.html";
+        window.location.href = "/FrontEnd/indexAdmin.html";
       })
       .catch(error => {alert(error.message);});
 });

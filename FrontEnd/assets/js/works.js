@@ -1,6 +1,3 @@
-// Fichier temporaire, brouillon
-
-
 // Fonctions
     //Création de figures
     export function creerFigure(work) {
@@ -37,7 +34,6 @@
 fetch('http://localhost:5678/api/works',)
 .then(response => response.json())
 .then((data) => {
-    let works = [data];
 
     for (const work of data){
         creerFigure(work);

@@ -236,10 +236,6 @@ footer nav ul {
 	width: 13.8%;
 }
 
-/* .btn-filters .Hotels\ \&\ restaurants {
-	width: 17.4%;
-} */
-
 
 /***** Page de connection *****/
 
@@ -317,5 +313,33 @@ body.page-connection footer {
 
 body.page-connection footer nav ul {
 	padding-right: 30px;
+}
+
+/***** Page administrateur *****/
+
+body.page-admin i {
+/* a voir si utile */
+}
+
+/** Top Bar **/
+body.page-admin .editionmode-topbar {
+	background-color: black;
+	color: white;
+}
+
+body.page-admin .editionmode-topbar i {
+
+}
+
+body.page-admin .editionmode-topbar p {
+
+}
+
+body.page-admin #portfolio i {
+
+}
+
+body.page-admin #portfolio p {
+
 }
 
