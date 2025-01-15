@@ -27,3 +27,18 @@ fetch('http://localhost:5678/api/works',)
     }
 })
 .catch(error => console.error(error)); 
+
+// Modale
+
+    // Ouverture/Fermeture modale
+const modal = document.getElementById("modal-main");
+const modalLinks = document.querySelectorAll(".modalOpen");
+for (const link of modalLinks) {
+    link.addEventListener ("click", (event) => {
+        event.preventDefault();
+        modal.showModal();
+    });
+};
+document.getElementById("closemodal").addEventListener ("click", () => {
+    modal.close();
+});

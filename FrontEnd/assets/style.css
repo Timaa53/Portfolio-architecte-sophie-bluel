@@ -329,7 +329,7 @@ body.page-connection footer nav ul {
 /********** Page administrateur **********/
 
 /** Top Bar **/
-body.page-admin .editionmode-topbar {
+body.page-admin #editionmode-topbar {
 	background-color: black;
 	color: white;
 	width: 1440px;
@@ -339,7 +339,7 @@ body.page-admin .editionmode-topbar {
 	align-items: center;
 	justify-content: center;
 	text-indent: 10px;
-
+	text-decoration: none;
 	position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -360,4 +360,19 @@ body.page-admin .portfolio-modal a {
 	color: inherit;
 	margin-top: 8px;
 	height: 18px;
+}
+
+/** Modale **/
+
+body.page-admin dialog {
+	width: 33.7%;
+	height: 63.9%;
+	position: fixed;
+	overflow: auto;
+	border: none;
+	border-radius: 10px;
+}
+
+body.page-admin dialog::backdrop {
+	background-color: rgba(0, 0, 0, 0.3);
 }
