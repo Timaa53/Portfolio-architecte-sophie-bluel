@@ -75,30 +75,13 @@ if (tokenOk) {
 
 
 
-/*
+
 
 
 // Fonctions
-    //Création de figures
-    function creerFigure(work) {
-        let figure = document.createElement("figure");
-        figure.id = (`${work.category.id}`)
-        let img = document.createElement("img");
-        img.src = work.imageUrl;
-        img.alt = work.title;
-        figure.appendChild(img);
-    
-        let title = document.createElement("figcaption");
-        title.innerText = work.title;
-        figure.appendChild(title);
-    
-        const containerGallery = document.querySelector(".gallery");
-        containerGallery.appendChild(figure);
-        return figure
-    }
 
     // Test pour modale
-    function creerFigureModal(work) {
+    export function creerFigureModal(work) {
         let figure = document.createElement("figure");
         figure.id = (`${work.category.id}`)
         let img = document.createElement("img");
@@ -116,9 +99,10 @@ if (tokenOk) {
     
         const containerModal = document.getElementById("1");
         containerModal.appendChild(figure);
+        
         return figure
     }
-
+/*
 // Récupération et affichage dynamique des travaux
 fetch('http://localhost:5678/api/works',)
 .then(response => response.json())
