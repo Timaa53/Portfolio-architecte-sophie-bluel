@@ -73,3 +73,10 @@ fetch('http://localhost:5678/api/categories',)
     };
 })
 .catch(error => console.error(error));
+
+
+const token = localStorage.getItem('token');
+if (token) {
+    console.log(token);
+}
+
