@@ -150,6 +150,8 @@ function buttonBottom (text) {
 }
 
 // Implémentation des éléments de la modale
+
+    // Modale 1
 const modal1 = creerModalContent ("modal-1");
 function contentModal1() {
     const modal = document.querySelector(".modalDialog");
@@ -167,6 +169,11 @@ function contentModal1() {
 }
 contentModal1()
 
+    // Modale 2
+
+
+
+    // Modale 3
 
 
 
