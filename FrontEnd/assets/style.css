@@ -404,14 +404,38 @@ body.page-connection footer nav ul {
 	font-weight: 400;
 }
 
-.modal-1 figure {
+.figures-modal {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+
+}
+
+.figures-modal figure {
+	height: auto;
+	/* border: 1px solid #B3B3B3; */
+}
+
+.figures-modal figure img {
 	width: 76px;
 	height: 102px;
 }
 
-.btn-bottom-modal {
-
+.modal-1 .btn-bottom-modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 36px;
+	width: 38%;
+	border-radius: 60px;
+	border: none;
+	font-family: "Syne";
+	color: white;
+	background-color: #1D6154;
+	margin: 20px auto;
 }
+
 
 
 /*

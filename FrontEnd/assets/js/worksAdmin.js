@@ -111,7 +111,7 @@ function creerFigureDiv() {
     modal1.appendChild(figureDivModal)
 }
 
-function creerFigureModal(work) {
+function creerFigureModal() {
 fetch('http://localhost:5678/api/works',)
 .then(response => response.json())
 .then((data) => {
@@ -129,14 +129,12 @@ fetch('http://localhost:5678/api/works',)
         // Création bouton delete photos
         let removeWorksBtn = document.createElement("button");
         removeWorksBtn.classList.add("photo-add-btn");
-        removeWorksBtn.id = work.id;
+        removeWorksBtn.id = (`${work.category.id}`);
         figure.appendChild(removeWorksBtn);
 
         const trashIcon = document.createElement("i");
         trashIcon.classList.add("fa-solid", "fa-trash-can");
         removeWorksBtn.appendChild(trashIcon);
-
-        return figure
     }
 })
 .catch(error => console.error(error));
