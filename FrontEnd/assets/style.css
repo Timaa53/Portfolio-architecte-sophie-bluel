@@ -371,21 +371,57 @@ body.page-connection footer nav ul {
 
 
 
-
-/* A revoir demain 18/01 */
-
 /** Modale **/
-body.page-admin dialog {
+
+.modalDialog {
 	width: 33.7%;
-	max-width: calc(100vw -20px);  /* pas appliqué, voir pourquoi */
-	max-height: calc(100vh -20px); /* pas appliqué, voir pourquoi */
 	height: 63.9%;
 	position: fixed;
-	overflow: auto;
-	border: none;
 	border-radius: 10px;
+	border: none;
+}
+
+.modalDialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-1 {
+	border-radius: 10px;	
+}
+
+.btn-top-modal {
+	display: flex;
+	justify-content: space-between;
+}
+
+.modal-1 h3 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 0;
+	height: 30px;
+	font-size: 26px;
+	font-weight: 400;
+}
+
+.modal-1 figure {
+	width: 76px;
+	height: 102px;
+}
+
+.btn-bottom-modal {
+
+}
+
+
+/*
+body.page-admin dialog {
+	width: 33.7%;
+	max-width: calc(100vw -20px);
+	max-height: calc(100vh -20px);
 }
 
 body.page-admin dialog::backdrop {
 	background-color: rgba(0, 0, 0, 0.3);
 }
+*/

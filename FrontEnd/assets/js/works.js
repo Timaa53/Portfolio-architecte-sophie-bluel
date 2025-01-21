@@ -16,7 +16,7 @@
         containerGallery.appendChild(figure);
         return figure
     }
-    
+   
         //Création de boutons
     export function creerFiltreBouton (category) {
         let button = document.createElement("button");
@@ -79,4 +79,3 @@ const token = localStorage.getItem('token');
 if (token) {
     console.log(token);
 }
-

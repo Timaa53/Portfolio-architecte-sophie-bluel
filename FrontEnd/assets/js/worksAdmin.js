@@ -10,7 +10,7 @@ function adminElements(text) { // Création div pour gestion des travaux
     // Balise a
     const baliseA = document.createElement("a");
     baliseA.href = "#modal-main";
-    baliseA.classList.add ("modalOpen");
+    baliseA.classList.add ("modal");
     divModalLinks.appendChild(baliseA);
 
     // Balise i
@@ -68,60 +68,128 @@ if (tokenOk) {
     portfolioDivAdd()
     hiddenButtonsFilters()
 }
+//////////////////////////////////////////////////////////////////////////////
+// Modale
+    // Fonctions modale
+function creerModalContent (modalClass) {
+    let modalContent = document.createElement("div");
+    modalContent.classList.add(modalClass);
+
+        const topBtnModal = document.createElement("div");
+        topBtnModal.classList.add("btn-top-modal");
+        modalContent.appendChild(topBtnModal);
+
+            const returnBtn = document.createElement("button");
+            returnBtn.classList.add("return-modal");
+            topBtnModal.appendChild(returnBtn);
+            const returnBtnIcon = document.createElement("i");
+            returnBtnIcon.classList.add("fa-solid", "fa-arrow-left");
+            returnBtn.appendChild(returnBtnIcon);
+
+            const closeModal = document.createElement("button");
+            closeModal.classList.add("close-modal");
+            topBtnModal.appendChild(closeModal);
+            const closeModalIcon = document.createElement("i");
+            closeModalIcon.classList.add("fa-solid", "fa-x");
+            closeModal.appendChild(closeModalIcon);
+            closeModal.addEventListener ("click", () => {modal.close();});
 
 
-
-
-
-
-
-
-
-
-// Fonctions
-
-    // Test pour modale
-    export function creerFigureModal(work) {
-        let figure = document.createElement("figure");
-        figure.id = (`${work.category.id}`)
-        let img = document.createElement("img");
-        img.src = work.imageUrl;
-        img.alt = work.title;
-        figure.appendChild(img);
-    
-        let title = document.createElement("figcaption");
-        title.innerText = work.title;
-        figure.appendChild(title);
-
-        let trashIcon = document.createElement("i");
-        trashIcon.classList.add("fa-solid", "fa-trash-can");
-        figure.appendChild(trashIcon);
-    
-        const containerModal = document.getElementById("1");
-        containerModal.appendChild(figure);
-        
-        return figure
+        return modalContent
     }
-/*
-// Récupération et affichage dynamique des travaux
+
+function Titleh3Modal (text) {
+    const TitleH3Modal = document.createElement("h3");
+        TitleH3Modal.innerText = text;
+
+    return TitleH3Modal
+}
+
+let figureDivModal = document.createElement("div");
+function creerFigureDiv() {
+    figureDivModal.classList.add("figures-modal");
+    modal1.appendChild(figureDivModal)
+}
+
+function creerFigureModal(work) {
 fetch('http://localhost:5678/api/works',)
 .then(response => response.json())
 .then((data) => {
 
     for (const work of data){
-        creerFigure(work);
-        creerFigureModal(work);
+        let figure = document.createElement("figure");
+        figure.id = (`${work.category.id}`);
+        figureDivModal.appendChild(figure);
+
+        let img = document.createElement("img");
+        img.src = work.imageUrl;
+        img.alt = work.title;
+        figure.appendChild(img);
+
+        // Création bouton delete photos
+        let removeWorksBtn = document.createElement("button");
+        removeWorksBtn.classList.add("photo-add-btn");
+        removeWorksBtn.id = work.id;
+        figure.appendChild(removeWorksBtn);
+
+        const trashIcon = document.createElement("i");
+        trashIcon.classList.add("fa-solid", "fa-trash-can");
+        removeWorksBtn.appendChild(trashIcon);
+
+        return figure
     }
 })
-.catch(error => console.error(error)); 
+.catch(error => console.error(error));
+}
+
+function buttonBottom (text) {
+    const buttonBottom = document.createElement("button");
+    buttonBottom.classList.add("btn-bottom-modal");
+    buttonBottom.innerText = text;
+    modal1.appendChild(buttonBottom);
+
+    return buttonBottom
+}
+
+// Implémentation des éléments de la modale
+const modal1 = creerModalContent ("modal-1");
+function contentModal1() {
+    const modal = document.querySelector(".modalDialog");
+    modal.appendChild(modal1);
+
+    const titleModal1 = Titleh3Modal ("Galerie photo", "modal-1");
+    modal1.appendChild(titleModal1);
+
+    creerFigureDiv();
+    creerFigureModal();
+
+    const buttonBottom1 = buttonBottom ("Ajouter une photo");
+    modal1.appendChild(buttonBottom1);
+
+}
+contentModal1()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Modale
 
     // Ouverture/Fermeture modale
-const modal = document.getElementById("modal-main");
-const modalLinks = document.querySelectorAll(".modalOpen");
-const closeModal = document.getElementById("closemodal");
-// const modalDiv = document.getElementById("1");
+const modal = document.querySelector(".modalDialog");
+const modalLinks = document.querySelectorAll(".modal");
+const closeModal = document.querySelector(".close-modal");
 
 
 for (const link of modalLinks) {
@@ -138,4 +206,4 @@ modal.addEventListener("click", (event) => {
         modal.close();
     };
 });
-*/
+

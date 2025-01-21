@@ -1,0 +1,72 @@
+
+
+
+
+#modal-main {
+        width: 33.7%;
+        max-width: calc(100vw -20px);  /* pas appliqué, voir pourquoi */
+        max-height: calc(100vh -20px); /* pas appliqué, voir pourquoi */
+        height: 63.9%;
+        position: fixed;
+        overflow: auto;
+        border: none;
+        border-radius: 10px;
+}
+
+#modal-main::backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#modal-main i {
+	display: flex;
+	justify-content: end;
+}
+
+#modal-main h3 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 0;
+	height: 30px;
+	font-size: 26px;
+	font-weight: 400;
+}
+
+#modal-main .modal {
+	border-bottom: 1px #B3B3B3 solid;
+	padding-bottom: 40px;
+	overflow: auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+#modal-main .photo-add {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 36px;
+	width: 38%;
+	border-radius: 60px;
+	border: none;
+	font-family: "Syne";
+	color: white;
+	background-color: #1D6154;
+	margin: 20px auto;
+}
+
+#modal-main .modal figure {
+	width: 18%;
+	height: 102px;
+}
+
+#modal-main .modal figure img {
+	width: 100%;
+	height: 100%;
+}
+
+#modal-main .modal figure i {
+	right: 10px;
+	position: sticky;
+	top: 0;
+}
