@@ -399,25 +399,28 @@ body.page-connection footer nav ul {
 .btn-top-modal {
 	display: flex;
 	justify-content: space-between;
+	width: 100%;
 }
 
 .btn-top-modal button {
 	border: none;
 	background-color: transparent;
+
+	margin: 0;
 }
 
 .modal-1 h3 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin: 10px 0;
+	margin: 30px 0;
 	height: 30px;
 	font-size: 26px;
 	font-weight: 400;
 }
 
 .figures-modal {
-	width: 74.7%;
+	width: 420px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -425,13 +428,13 @@ body.page-connection footer nav ul {
 	box-sizing: border-box;
 	gap: 10px;
 	position: relative;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid #B3B3B3;
+	padding-bottom: 110px;
 }
 
 .figures-modal figure {
-	height: auto;
+	height: 102px;
 	position: relative;
-	/* border: 1px solid #B3B3B3; */
 }
 
 .figures-modal figure img {
@@ -466,11 +469,6 @@ body.page-connection footer nav ul {
 	color: white;
 	background-color: #1D6154;
 	margin: 20px auto;
-	
-	position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 

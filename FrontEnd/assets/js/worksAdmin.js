@@ -71,7 +71,7 @@ if (tokenOk) {
 //////////////////////////////////////////////////////////////////////////////
 // Modale
     // Fonctions modale
-function creerModalContent (modalClass) {
+function creerModalContent (modalClass, hiddenReturnBtn) {
     let modalContent = document.createElement("div");
     modalContent.classList.add(modalClass);
 
@@ -81,6 +81,7 @@ function creerModalContent (modalClass) {
 
             const returnBtn = document.createElement("button");
             returnBtn.classList.add("return-modal");
+            returnBtn.style.visibility = hiddenReturnBtn;
             topBtnModal.appendChild(returnBtn);
             const returnBtnIcon = document.createElement("i");
             returnBtnIcon.classList.add("fa-solid", "fa-arrow-left");
@@ -152,8 +153,9 @@ function buttonBottom (text) {
 // Implémentation des éléments de la modale
 
     // Modale 1
-const modal1 = creerModalContent ("modal-1");
+const modal1 = creerModalContent ("modal-1", "hidden");
 function contentModal1() {
+
     const modal = document.querySelector(".modalDialog");
     modal.appendChild(modal1);
 
@@ -165,17 +167,46 @@ function contentModal1() {
 
     const buttonBottom1 = buttonBottom ("Ajouter une photo");
     modal1.appendChild(buttonBottom1);
-
 }
-contentModal1()
+contentModal1();
+/*
+
 
     // Modale 2
+modal1 = "hidden"; //écrit juste pour comprendre ce qu'il y a à faire
+const modal2 = creerModalContent ("modal-2");
+function contentModal2() {
+    const modal = document.querySelector(".modalDialog");
+    modal.appendChild(modal2);
 
+    const titleModal2 = titleh3Modal ("Ajout photo", "modal-2");
+    modal2.appendChild(titleModal2);
+
+    // ici ajouter les éléments de l'endroit ou on ajoute une photo
+
+    const buttonBottom2 = buttonBottom ("Valider");
+    modal2.appendChild(buttonBottom2);
+}
 
 
     // Modale 3
-
-
+    modal1 = "hidden"; modal2 = "hidden" //écrit juste pour comprendre ce qu'il y a à faire
+    const modal3 = creerModalContent ("modal-3");
+    function contentModal3() {
+        const modal = document.querySelector(".modalDialog");
+        modal.appendChild(modal3);
+    
+        const titleModal3 = titleh3Modal ("Ajout photo", "modal-3");
+        modal3.appendChild(titleModal3);
+    
+        // ici ajouter les éléments de l'endroit ou on a ajouté la photo
+        // un formulaire contenant un TITRE en texte libre + une liste de catégories déroulantes
+        // qui contient toutes les catégories de la route api/categories (pas logique nouvelles?)
+    
+        const buttonBottom3 = buttonBottom ("Valider");
+        modal3.appendChild(buttonBottom3);
+    }
+*/
 
 
 
