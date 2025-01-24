@@ -426,15 +426,16 @@ body.page-connection footer nav ul {
 	flex-wrap: wrap;
 	overflow: auto;
 	box-sizing: border-box;
-	gap: 10px;
+	gap: 6px;
 	position: relative;
 	border-bottom: 1px solid #B3B3B3;
-	padding-bottom: 110px;
+	padding-bottom: 50px;
 }
 
 .figures-modal figure {
 	height: 102px;
 	position: relative;
+	margin-bottom: 20px;
 }
 
 .figures-modal figure img {
