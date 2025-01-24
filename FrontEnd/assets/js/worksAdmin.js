@@ -119,7 +119,7 @@ fetch('http://localhost:5678/api/works',)
 
     for (const work of data){
         let figure = document.createElement("figure");
-        figure.id = (`${work.category.id}`);
+        figure.id = (`${work.id}`);
         figureDivModal.appendChild(figure);
 
         let img = document.createElement("img");
@@ -129,9 +129,28 @@ fetch('http://localhost:5678/api/works',)
 
         // Création bouton delete photos
         let removeWorksBtn = document.createElement("button");
-        removeWorksBtn.classList.add("photo-add-btn");
+        removeWorksBtn.classList.add("delete-work-btn");
         removeWorksBtn.id = (`${work.category.id}`);
         figure.appendChild(removeWorksBtn);
+        
+        removeWorksBtn.addEventListener ("click", () => {
+
+                fetch(`http://localhost:5678/api/works/${figure.id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${localStorage.getItem("token")}`
+                    },
+                })
+                .then((response) => {
+                    if (response.ok) {
+                    console.log (`Elément ${figure.id} supprimé!`)
+                    figure.remove();
+                    }else {
+                    console.error(`Erreur de suppression: ${response.status}`)};
+                    })
+        .catch(error => console.error(error));
+        });
 
         const trashIcon = document.createElement("i");
         trashIcon.classList.add("fa-solid", "fa-trash-can");
@@ -170,6 +189,8 @@ function contentModal1() {
 }
 contentModal1();
 /*
+
+for (removeWorkBtn of removeWorksBtn)
 
 
     // Modale 2
