@@ -31,7 +31,7 @@
 
 
 // Récupération et affichage dynamique des travaux
-fetch('http://localhost:5678/api/works',)
+fetch("http://localhost:5678/api/works",)
 .then(response => response.json())
 .then((data) => {
 
@@ -43,7 +43,7 @@ fetch('http://localhost:5678/api/works',)
 
 
 // Récupération des catégories, création des boutons et tri des travaux
-fetch('http://localhost:5678/api/categories',)
+fetch("http://localhost:5678/api/categories",)
 .then(response => response.json())
 .then((data) => {
     const categories = [{ id: null, name: "Tous" }, ...data];

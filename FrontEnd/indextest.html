@@ -79,8 +79,56 @@
 
 
 
+
+
+
+
+
+
+
 <dialog>
-	<div class="modal1" "modal2" "modal3">
+	<div class="modal1"></div> <!--afficher/masquer -->
+	<div class="modal-2">
+		<form>
+			<div class="work-photo-add">
+				<i class="fa-regular fa-image"></i>
+				<label for="photoInput">ajouter photo</label>
+				<input type="file" id="photoInput" name="photo" accept="image/jpeg, image/png" required>
+				<p class="filesRestrictions">jpg, png: 4mo max</p>
+			</div>
+			
+			
+			<div class="work-title">
+				<label for="titleInput">Titre</label>
+				<input type="text" id="titleInput" name="title" required>
+			</div>
+
+
+			
+			/////////////////////////////////////////////////////
+			<div class="work-categories">
+				<label for="categories">Catégorie</label>
+				<select id="categories" name="categories" required>
+					<option value="objets">objets</option>
+					<option value="hotels et restaurants">hotels et restaurants</option>
+					<option value="appartements">appartements</option>
+				</select>
+			</div>
+		</form>
+
+
+
+
+
+
+
+
+
+
+
+
+	</div>
+	</div> "modal2" "modal3">
 		<button class="return-modal">retour arrière</button>
 		<button>fermer la modale</button>
 		<h3>Titre</h3>
