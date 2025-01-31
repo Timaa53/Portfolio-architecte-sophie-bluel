@@ -375,8 +375,8 @@ body.page-connection footer nav ul {
 
 .modalDialog {
 	width: 35.2%;
+	max-width: 630px;
 	height: 64.4%;
-	position: fixed;
 	border-radius: 10px;
 	border: none;
 	padding: 20px;
@@ -396,6 +396,12 @@ body.page-connection footer nav ul {
 	align-items: center;
 }
 
+.header-modal {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+
 .btn-top-modal {
 	display: flex;
 	justify-content: space-between;
@@ -405,11 +411,16 @@ body.page-connection footer nav ul {
 .btn-top-modal button {
 	border: none;
 	background-color: transparent;
-
 	margin: 0;
 }
 
-.modal-1 h3 {
+.modal-1 .close-modal {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+.modalDialog header h3 {
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -419,7 +430,7 @@ body.page-connection footer nav ul {
 	font-weight: 400;
 }
 
-.figures-modal {
+.main-modal-1 {
 	width: 420px;
 	display: flex;
 	flex-direction: row;
@@ -429,21 +440,21 @@ body.page-connection footer nav ul {
 	gap: 6px;
 	position: relative;
 	border-bottom: 1px solid #B3B3B3;
-	padding-bottom: 50px;
+	padding-bottom: 20px;
 }
 
-.figures-modal figure {
+.main-modal-1 figure {
 	height: 102px;
 	position: relative;
 	margin-bottom: 20px;
 }
 
-.figures-modal figure img {
+.main-modal-1 figure img {
 	width: 76px;
 	height: 102px;
 }
 
-.figures-modal figure button {
+.main-modal-1 figure button {
 	width: 17px;
 	height: 17px;
 	position: absolute;
@@ -457,31 +468,101 @@ body.page-connection footer nav ul {
 	border-radius: 2px;
 }
 
+.modalDialog footer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
 
-.modal-1 .btn-bottom-modal {
+.modalDialog footer .btn-bottom-modal {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 36px;
-	width: 38%;
+	width: 237px;
 	border-radius: 60px;
 	border: none;
 	font-family: "Syne";
 	color: white;
 	background-color: #1D6154;
-	margin: 20px auto;
+	margin: 20px;
 }
 
 
 
-/*
-body.page-admin dialog {
-	width: 33.7%;
-	max-width: calc(100vw -20px);
-	max-height: calc(100vh -20px);
+
+.modal-2 {
+	flex-direction: column;
 }
 
-body.page-admin dialog::backdrop {
-	background-color: rgba(0, 0, 0, 0.3);
+.modal-2 header h3 {
+	margin: 13px;
 }
-*/
+
+.main-modal-2 {
+	display: flex;
+	width: 420px;
+	height: 416px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #B3B3B3;
+	padding-bottom: 20px;
+	margin: auto;
+}
+
+.main-modal-2 form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.work-photo-add {
+	width: 100%;
+	height: 169px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #E8F1F6;
+	margin-top: 20px;
+	align-items: center;
+	gap: 10px;
+}
+
+.work-photo-add i {
+	font-size: 76px;
+	color: #B9C5CC;
+}
+
+.work-photo-add label {
+	background-color: #CBD6DC;
+	width: 173px;
+	height: 36px;
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 500;
+}
+
+.work-photo-add p {
+	font-size: 10px;
+}
+
+.work-title, .work-categories {
+	display: flex;
+	flex-direction: column;
+	
+}
+
+.work-title label, .work-categories label {
+	font-weight: 500;
+}
+
+.work-title input, .work-categories select {
+	height: 51px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+	margin-top: 10px;
+	text-indent: 10px;
+}
+

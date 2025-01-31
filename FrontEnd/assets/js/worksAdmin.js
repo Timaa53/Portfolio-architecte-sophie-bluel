@@ -70,6 +70,10 @@ if (tokenOk) {
 }
 //////////////////////////////////////////////////////////////////////////////
 // Modal
+
+
+
+
 // Fonctions
 function mainContentDivModal(divclass, classListMainModal, hiddenmodal2) {
     const modal = document.querySelector(".modalDialog");
@@ -109,9 +113,11 @@ const headerModal = document.querySelector(modalClass);
         btnTopModal.appendChild(returnBtn);
         returnBtn.addEventListener("click",() => {
             const modal1 = document.querySelector(".modal-1");
-            modal1.style.display = "block";
+            modal1.style.display = "flex";
             const modal2 = document.querySelector(".modal-2");
             modal2.style.display = "none";
+            const form = document.querySelector(".main-modal-2 form");
+            form.reset();
         })
         const returnBtnIcon = document.createElement("i");
         returnBtnIcon.classList.add("fa-solid", "fa-arrow-left");
@@ -121,6 +127,16 @@ const headerModal = document.querySelector(modalClass);
     const closeModal = document.createElement("button");
         closeModal.classList.add("close-modal");
         btnTopModal.appendChild(closeModal);
+
+        closeModal.addEventListener("click",() => {
+            const modal1 = document.querySelector(".modal-1");
+            modal1.style.display = "flex";
+            const modal2 = document.querySelector(".modal-2");
+            modal2.style.display = "none";
+            const form = document.querySelector(".main-modal-2 form");
+            form.reset();
+        })
+
         const closeModalIcon = document.createElement("i");
         closeModalIcon.classList.add("fa-solid", "fa-x");
         closeModal.appendChild(closeModalIcon);
@@ -209,17 +225,24 @@ function formModal2() {
     workPhotoAdd.appendChild(workPhotoAddIcon);
 
     const labelPhoto = document.createElement("label");
-    labelPhoto.for = "photoInput";
-    labelPhoto.textContent = "Ajouter photo";
+    labelPhoto.htmlFor = "photoInput";
+    labelPhoto.textContent = "+ Ajouter photo";
+    labelPhoto.style.cursor = "pointer";
     workPhotoAdd.appendChild(labelPhoto);
 
     const inputPhoto = document.createElement("input");
     inputPhoto.type = "file";
-    inputPhoto.id = labelPhoto.for;
+    inputPhoto.id = labelPhoto.htmlFor;
     inputPhoto.name = "photo";
     inputPhoto.accept = "image/jpeg, image/png";
     inputPhoto.required = true;
+    inputPhoto.style.display = "none";
     workPhotoAdd.appendChild(inputPhoto);
+    inputPhoto.addEventListener ("change", function () {
+        if (this.files.length > 0) {
+            console.log("Fichier sélectionné : " + this.files[0].name);
+        }
+    })
 
     const pPhoto = document.createElement("p");
     pPhoto.classList.add("filesRestrictions");
@@ -230,13 +253,13 @@ function formModal2() {
     const workTitle = document.querySelector(".work-title");
 
     const labelTitle = document.createElement("label");
-    labelTitle.for = "titleInput";
+    labelTitle.htmlFor = "titleInput";
     labelTitle.textContent = "Titre";
     workTitle.appendChild(labelTitle);
 
     const inputTitle = document.createElement("input");
     inputTitle.type = "text";
-    inputTitle.id = labelTitle.for;
+    inputTitle.id = labelTitle.htmlFor;
     inputTitle.name = "title";
     inputTitle.required = true;
     workTitle.appendChild(inputTitle);
@@ -245,12 +268,12 @@ function formModal2() {
     const workCategories = document.querySelector(".work-categories");
 
     const labelCategories = document.createElement("label");
-    labelCategories.for = "categories";
+    labelCategories.htmlFor = "categories";
     labelCategories.textContent = "Catégories";
     workCategories.appendChild(labelCategories);
 
     const selectCategories = document.createElement("select");
-    selectCategories.id = labelCategories.for;
+    selectCategories.id = labelCategories.htmlFor;
     selectCategories.name = "categories";
     selectCategories.required = true;
     workCategories.appendChild(selectCategories);
@@ -280,7 +303,7 @@ function footerButtonModal1() {
         const modal1 = document.querySelector(".modal-1");
         const modal2 = document.querySelector(".modal-2");
         modal1.style.display = "none";
-        modal2.style.display = "block";
+        modal2.style.display = "flex";
     })
 }
 
@@ -290,6 +313,7 @@ function footerButtonModal2() {
     const buttonBottom = document.createElement("button");
         buttonBottom.classList.add("btn-bottom-modal");
         buttonBottom.innerText = "Valider";
+        buttonBottom.disabled = true;
         footerModal.appendChild(buttonBottom);
 
     buttonBottom.addEventListener("click", async (event) => {
@@ -308,7 +332,7 @@ function footerButtonModal2() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log("Envoi réalisé: ", data);
+            console.log("Envoi réalisé: ", data); //////////a modifier
 
             const form = document.querySelector(".main-modal-2 form");
             form.reset();
@@ -358,6 +382,12 @@ modal2Content();
     });
     modal.addEventListener("click", (event) => {
         if (event.target === modal) {
+            const modal1 = document.querySelector(".modal-1");
+            modal1.style.display = "flex";
+            const modal2 = document.querySelector(".modal-2");
+            modal2.style.display = "none";
+            const form = document.querySelector(".main-modal-2 form");
+            form.reset();
             modal.close();
         };
     });
