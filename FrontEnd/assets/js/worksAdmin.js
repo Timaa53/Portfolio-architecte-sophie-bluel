@@ -314,7 +314,37 @@ function footerButtonModal2() {
         buttonBottom.classList.add("btn-bottom-modal");
         buttonBottom.innerText = "Valider";
         buttonBottom.disabled = true;
+        buttonBottom.style.backgroundColor = "#A7A7A7";
         footerModal.appendChild(buttonBottom);
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+    function buttonBottomColor() { //Modification dynamique du bouton VALIDER de la modal-2
+
+        const inputPhoto = document.getElementById("photoInput");
+        inputPhoto.addEventListener("change", buttonBottomColor);
+        const inputTitle = document.getElementById("titleInput")
+        inputTitle.addEventListener("input", buttonBottomColor);
+        const selectCategories = document.getElementById("categories")
+        selectCategories.addEventListener("change", buttonBottomColor);
+
+
+        if (inputPhoto.files.length > 0 && inputTitle.value.trim() !== "" && selectCategories.value !== "") {
+            buttonBottom.disabled = false;
+            buttonBottom.style.backgroundColor = "#1D6154"; // Bouton vert & activé
+        } else {
+            buttonBottom.disabled = true;
+            buttonBottom.style.backgroundColor = "#A7A7A7"; // Bouton gris & désactivé
+        }
+    };
+    buttonBottomColor();
+
+    ////////////////////////////////////////// A revoir, ne fonctionne pas//////////////////////////////////////////
+    const returnBtn = document.querySelector(".return-modal-1");
+        returnBtn.addEventListener("click", () => {
+            buttonBottom.disabled = true;
+            buttonBottom.style.backgroundColor = "#A7A7A7";
+        });
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     buttonBottom.addEventListener("click", async (event) => {
         event.preventDefault();
@@ -379,6 +409,10 @@ modal2Content();
     };
     closeModal.addEventListener ("click", () => {
         modal.close();
+
+        const buttonBottom = document.querySelector(".modal-2 .btn-bottom-modal");
+        buttonBottom.disabled = true;
+        buttonBottom.style.backgroundColor = "#A7A7A7";
     });
     modal.addEventListener("click", (event) => {
         if (event.target === modal) {
@@ -388,6 +422,11 @@ modal2Content();
             modal2.style.display = "none";
             const form = document.querySelector(".main-modal-2 form");
             form.reset();
+
+            const buttonBottom = document.querySelector(".modal-2 .btn-bottom-modal");
+            buttonBottom.disabled = true;
+            buttonBottom.style.backgroundColor = "#A7A7A7";
+
             modal.close();
         };
     });
