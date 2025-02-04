@@ -118,6 +118,7 @@ const headerModal = document.querySelector(modalClass);
             modal2.style.display = "none";
             const form = document.querySelector(".main-modal-2 form");
             form.reset();
+            resetButtonModal2();
         })
         const returnBtnIcon = document.createElement("i");
         returnBtnIcon.classList.add("fa-solid", "fa-arrow-left");
@@ -314,20 +315,40 @@ function footerButtonModal2() {
         buttonBottom.classList.add("btn-bottom-modal");
         buttonBottom.innerText = "Valider";
         buttonBottom.disabled = true;
-        buttonBottom.style.backgroundColor = "#A7A7A7";
         footerModal.appendChild(buttonBottom);
-///////////////////////////////////////////////////////////////////////////////////////////////
 
-    function buttonBottomColor() { //Modification dynamique du bouton VALIDER de la modal-2
+        buttonBottom.addEventListener("click", async (event) => {
+            event.preventDefault();
 
-        const inputPhoto = document.getElementById("photoInput");
-        inputPhoto.addEventListener("change", buttonBottomColor);
-        const inputTitle = document.getElementById("titleInput")
-        inputTitle.addEventListener("input", buttonBottomColor);
-        const selectCategories = document.getElementById("categories")
-        selectCategories.addEventListener("change", buttonBottomColor);
+            
 
+        const newWork = {
+            image: event.target.querySelector("[name=photo]").value,
+            titre: event.target.querySelector("[name=title]").value,
+            categorie: event.target.querySelector("[name=categories]").value,
+        }
+        fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(newWork)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Envoi réalisé: ", data); ////////////////////////////////////////////////////////////////a modifier
 
+            const form = document.querySelector(".main-modal-2 form");
+            form.reset();
+        }).catch(error => console.error(error));
+    })
+}
+
+function buttonBottomColor() { //Modification dynamique du bouton VALIDER de la modal-2
+    const inputPhoto = document.getElementById("photoInput");
+    const inputTitle = document.getElementById("titleInput")
+    const selectCategories = document.getElementById("categories");
+    const buttonBottom = document.querySelector(".modal-2 .footer-modal button");
+
+    function dynamicButtonBottom() {
         if (inputPhoto.files.length > 0 && inputTitle.value.trim() !== "" && selectCategories.value !== "") {
             buttonBottom.disabled = false;
             buttonBottom.style.backgroundColor = "#1D6154"; // Bouton vert & activé
@@ -336,39 +357,18 @@ function footerButtonModal2() {
             buttonBottom.style.backgroundColor = "#A7A7A7"; // Bouton gris & désactivé
         }
     };
-    buttonBottomColor();
+    inputPhoto.addEventListener("change", dynamicButtonBottom);
+    inputTitle.addEventListener("input", dynamicButtonBottom);
+    selectCategories.addEventListener("change", dynamicButtonBottom);
+    dynamicButtonBottom()
+};
 
-    ////////////////////////////////////////// A revoir, ne fonctionne pas//////////////////////////////////////////
-    const returnBtn = document.querySelector(".return-modal-1");
-        returnBtn.addEventListener("click", () => {
-            buttonBottom.disabled = true;
-            buttonBottom.style.backgroundColor = "#A7A7A7";
-        });
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    buttonBottom.addEventListener("click", async (event) => {
-        event.preventDefault();
-
-        const newWork = {
-            image: event.target.querySelector("[name=photo]").value,
-            titre: event.target.querySelector("[name=title]").value,
-            categorie: event.target.querySelector("[name=categories]").value,
-        }
-    
-        fetch("http://localhost:5678/api/works", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(newWork)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log("Envoi réalisé: ", data); //////////a modifier
-
-            const form = document.querySelector(".main-modal-2 form");
-            form.reset();
-        }).catch(error => console.error(error));
-    })
+function resetButtonModal2 () {
+    const buttonBottom = document.querySelector(".modal-2 .footer-modal button");
+    buttonBottom.disabled = true;
+    buttonBottom.style.backgroundColor = "#A7A7A7";
 }
+
 
 
 // Modal 1
@@ -378,7 +378,6 @@ function modal1Content() {
     titleh3Modal(".modal-1 .header-modal", "Galerie photo");
     figuresContentModal1();
     footerButtonModal1();
-
 }
 modal1Content();
 
@@ -389,8 +388,13 @@ function modal2Content() {
     titleh3Modal(".modal-2 .header-modal", "Ajout photo");
     formModal2();
     footerButtonModal2();
+    buttonBottomColor();
 }
 modal2Content();
+const returnBtn = document.querySelector(".return-modal-1");
+returnBtn.addEventListener("click", () => {
+    resetButtonModal2 ();
+});
 
 
 // Modale
@@ -400,19 +404,16 @@ modal2Content();
     const modalLinks = document.querySelectorAll(".modal");
     const closeModal = document.querySelector(".close-modal");
     
-    
     for (const link of modalLinks) {
         link.addEventListener ("click", (event) => {
             event.preventDefault();
             modal.showModal();
+            resetButtonModal2();
         });
     };
     closeModal.addEventListener ("click", () => {
-        modal.close();
-
-        const buttonBottom = document.querySelector(".modal-2 .btn-bottom-modal");
-        buttonBottom.disabled = true;
-        buttonBottom.style.backgroundColor = "#A7A7A7";
+        resetButtonModal2();
+            modal.close();    
     });
     modal.addEventListener("click", (event) => {
         if (event.target === modal) {
@@ -423,10 +424,7 @@ modal2Content();
             const form = document.querySelector(".main-modal-2 form");
             form.reset();
 
-            const buttonBottom = document.querySelector(".modal-2 .btn-bottom-modal");
-            buttonBottom.disabled = true;
-            buttonBottom.style.backgroundColor = "#A7A7A7";
-
+            resetButtonModal2 ();
             modal.close();
         };
     });
