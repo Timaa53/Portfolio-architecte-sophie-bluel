@@ -548,6 +548,13 @@ body.page-connection footer nav ul {
 	font-size: 10px;
 }
 
+#file-preview {
+	position: absolute;
+	object-fit: cover;
+	height: 169px;
+	width: 129px;
+}
+
 .work-title, .work-categories {
 	display: flex;
 	flex-direction: column;

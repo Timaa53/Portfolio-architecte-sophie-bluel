@@ -239,11 +239,36 @@ function formModal2() {
     inputPhoto.required = true;
     inputPhoto.style.display = "none";
     workPhotoAdd.appendChild(inputPhoto);
+
+    // Preview photo miniature avant ajout
+    const previewImg = document.createElement("img");
+    previewImg.id = "file-preview";
+    previewImg.style.display = "none";
+    workPhotoAdd.appendChild(previewImg);
+
     inputPhoto.addEventListener ("change", function () {
         if (this.files.length > 0) {
             console.log("Fichier sélectionné : " + this.files[0].name);
+        };
+
+        const file = this.files[0];
+        if (file) {
+            const fileReader = new FileReader();
+
+            fileReader.onload = function (event) {
+                previewImg.setAttribute("src", event.target.result);
+                previewImg.style.display = "block";
+
+                const labelPhoto = document.querySelector("label[for='photoInput']");
+                labelPhoto.style.display = "none";
+            };
+            fileReader.readAsDataURL(file);
+        } else {
+            previewImg.style.display = "none";
+            previewImg.removeAttribute("src");
+            labelPhoto.style.display = "block";
         }
-    })
+    });
 
     const pPhoto = document.createElement("p");
     pPhoto.classList.add("filesRestrictions");
@@ -319,8 +344,6 @@ function footerButtonModal2() {
 
         buttonBottom.addEventListener("click", async (event) => {
             event.preventDefault();
-
-            
 
         const newWork = {
             image: event.target.querySelector("[name=photo]").value,
@@ -428,3 +451,10 @@ returnBtn.addEventListener("click", () => {
             modal.close();
         };
     });
+/* A rajouter quelque part car preview + label ne se réinitialisent pas
+    const preview = document.getElementById("file-preview");
+            preview.removeAttribute("src");
+            preview.style.display = "none";
+            const labelPhoto = document.querySelector("label[for='file-input']");
+            labelPhoto.style.display = "block";
+*/
