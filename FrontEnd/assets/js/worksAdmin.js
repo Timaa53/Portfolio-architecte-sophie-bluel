@@ -119,6 +119,7 @@ const headerModal = document.querySelector(modalClass);
             const form = document.querySelector(".main-modal-2 form");
             form.reset();
             resetButtonModal2();
+            resetPreviewImg();
         })
         const returnBtnIcon = document.createElement("i");
         returnBtnIcon.classList.add("fa-solid", "fa-arrow-left");
@@ -342,28 +343,32 @@ function footerButtonModal2() {
         buttonBottom.disabled = true;
         footerModal.appendChild(buttonBottom);
 
-        buttonBottom.addEventListener("click", async (event) => {
-            event.preventDefault();
+    buttonBottom.addEventListener("click", async (event) => {
+        event.preventDefault();
 
-        const newWork = {
-            image: event.target.querySelector("[name=photo]").value,
-            titre: event.target.querySelector("[name=title]").value,
-            categorie: event.target.querySelector("[name=categories]").value,
-        }
+        const formData = new FormData(); //////////////////////////////////////////////////////////// Ne fonctionne pas, voir pourquoi
+            formData.append("image", fileInput.files[0]);
+            formData.append("title", titleInput.value);
+            formData.append("category", categoryInput.value);
+
+            console.log(document.querySelector("#fileInput"));
+            console.log(document.querySelector("#titleInput"));
+            console.log(document.querySelector("#categoryInput"));
+
         fetch("http://localhost:5678/api/works", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(newWork)
+        headers: {"Authorization": `Bearer ${localStorage.getItem("token")}`},
+        body: formData
         })
         .then(response => response.json())
         .then(data => {
-            console.log("Envoi réalisé: ", data); ////////////////////////////////////////////////////////////////a modifier
+            console.log("Nouvel ajout effectué: ", data);
 
             const form = document.querySelector(".main-modal-2 form");
             form.reset();
-        }).catch(error => console.error(error));
+        }).catch(error => console.error("Erreur d'ajout: ", error));
     })
-}
+};
 
 function buttonBottomColor() { //Modification dynamique du bouton VALIDER de la modal-2
     const inputPhoto = document.getElementById("photoInput");
@@ -392,6 +397,14 @@ function resetButtonModal2 () {
     buttonBottom.style.backgroundColor = "#A7A7A7";
 }
 
+function resetPreviewImg () {
+    const preview = document.getElementById("file-preview");
+    preview.removeAttribute("src");
+    preview.style.display = "none";
+
+    const labelPhoto = document.querySelector("label[for='photoInput']");
+    labelPhoto.style.display = "flex";
+};
 
 
 // Modal 1
@@ -432,11 +445,13 @@ returnBtn.addEventListener("click", () => {
             event.preventDefault();
             modal.showModal();
             resetButtonModal2();
+            resetPreviewImg();
         });
     };
     closeModal.addEventListener ("click", () => {
         resetButtonModal2();
-            modal.close();    
+        resetPreviewImg();
+        modal.close();    
     });
     modal.addEventListener("click", (event) => {
         if (event.target === modal) {
@@ -446,15 +461,9 @@ returnBtn.addEventListener("click", () => {
             modal2.style.display = "none";
             const form = document.querySelector(".main-modal-2 form");
             form.reset();
-
+            resetPreviewImg ();
             resetButtonModal2 ();
+
             modal.close();
         };
     });
-/* A rajouter quelque part car preview + label ne se réinitialisent pas
-    const preview = document.getElementById("file-preview");
-            preview.removeAttribute("src");
-            preview.style.display = "none";
-            const labelPhoto = document.querySelector("label[for='file-input']");
-            labelPhoto.style.display = "block";
-*/
