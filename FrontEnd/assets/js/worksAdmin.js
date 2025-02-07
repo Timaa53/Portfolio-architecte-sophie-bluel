@@ -71,10 +71,9 @@ if (tokenOk) {
 //////////////////////////////////////////////////////////////////////////////
 // Modal
 
-
-
-
 // Fonctions
+import {galleryWorks} from "./works.js"
+
 function mainContentDivModal(divclass, classListMainModal, hiddenmodal2) {
     const modal = document.querySelector(".modalDialog");
     const modalMain = document.createElement("div");
@@ -159,6 +158,7 @@ function titleh3Modal(modalClass, text) {
 
 function figuresContentModal1() { // Création des figures de la modal-1 dans main
     const mainModal1 = document.querySelector(".main-modal-1");
+    mainModal1.innerHTML = "";
 
     // Création figure
     fetch('http://localhost:5678/api/works',)
@@ -191,11 +191,13 @@ function figuresContentModal1() { // Création des figures de la modal-1 dans ma
                     })
                     .then((response) => {
                         if (response.ok) {
-                        console.log (`Elément ${figure.id} supprimé!`)
-                        figure.remove();
+                            console.log (`Elément ${figure.id} supprimé!`)
+                            figure.remove();
+                            galleryWorks();
                         }else {
-                        console.error(`Erreur de suppression: ${response.status}`)};
-                        })
+                            console.error(`Erreur de suppression: ${response.status}`)
+                        };
+                    })
             .catch(error => console.error(error));
             });
         // Création icone poubelle
@@ -311,7 +313,7 @@ function formModal2() {
         const categories = [{ id: "", name: ""}, ...data];
         for (const category of categories)  {
             const selectOption = document.createElement("option");
-            selectOption.value = (`${category.name}`);
+            selectOption.value = (`${category.id}`);
             selectOption.textContent = (`${category.name}`);
             selectCategories.appendChild(selectOption);
         }
@@ -335,7 +337,11 @@ function footerButtonModal1() {
 }
 
 function footerButtonModal2() {
-    const footerModal = document.querySelector(".modal-2 .footer-modal")
+    const footerModal = document.querySelector(".modal-2 .footer-modal");
+
+    const fileInput = document.getElementById("photoInput");
+    const titleInput = document.getElementById("titleInput");
+    const categoryInput = document.getElementById("categories");
 
     const buttonBottom = document.createElement("button");
         buttonBottom.classList.add("btn-bottom-modal");
@@ -346,14 +352,10 @@ function footerButtonModal2() {
     buttonBottom.addEventListener("click", async (event) => {
         event.preventDefault();
 
-        const formData = new FormData(); //////////////////////////////////////////////////////////// Ne fonctionne pas, voir pourquoi
+        const formData = new FormData(); 
             formData.append("image", fileInput.files[0]);
             formData.append("title", titleInput.value);
-            formData.append("category", categoryInput.value);
-
-            console.log(document.querySelector("#fileInput"));
-            console.log(document.querySelector("#titleInput"));
-            console.log(document.querySelector("#categoryInput"));
+            formData.append("category", parseInt(categoryInput.value, 10));
 
         fetch("http://localhost:5678/api/works", {
         method: "POST",
@@ -364,8 +366,12 @@ function footerButtonModal2() {
         .then(data => {
             console.log("Nouvel ajout effectué: ", data);
 
+            galleryWorks();
+            figuresContentModal1();
+
             const form = document.querySelector(".main-modal-2 form");
             form.reset();
+            resetPreviewImg ();
         }).catch(error => console.error("Erreur d'ajout: ", error));
     })
 };

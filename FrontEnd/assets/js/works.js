@@ -29,17 +29,28 @@
         return button
     };
 
+    
+
 
 // Récupération et affichage dynamique des travaux
-fetch("http://localhost:5678/api/works",)
-.then(response => response.json())
-.then((data) => {
 
-    for (const work of data){
-        creerFigure(work);
-    }
-})
-.catch(error => console.error(error)); 
+export function galleryWorks () {
+    const containerGallery = document.querySelector(".gallery");
+    containerGallery.innerHTML = "";
+
+    fetch("http://localhost:5678/api/works",)
+    .then(response => response.json())
+    .then((data) => {
+
+        for (const work of data){
+            creerFigure(work);
+        }
+    })
+    .catch(error => console.error(error)); 
+};
+galleryWorks ();
+
+
 
 
 // Récupération des catégories, création des boutons et tri des travaux
