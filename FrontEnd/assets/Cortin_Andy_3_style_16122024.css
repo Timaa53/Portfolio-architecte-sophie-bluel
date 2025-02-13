@@ -1,0 +1,577 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/** end reset css**/
+body {
+	max-width: 1140px;
+	margin:auto;
+	font-family: 'Work Sans' ;
+	font-size: 14px;
+	background-color: #FFFEF8;
+}
+header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0
+}
+section {
+	margin: 50px 0
+}
+
+h1{
+	display: flex;
+	flex-direction: column;
+	font-family: 'Syne';
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C
+}
+
+h1 > span {
+	font-family: 'Work Sans';
+	font-size:10px;
+	letter-spacing: 0.1em;
+;
+}
+
+h2{
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 30px;
+	color: #1D6154
+}
+nav ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+
+}
+nav li {
+	padding: 0 10px;
+	font-size: 1.2em;
+}
+
+li:hover {
+	color: #B1663C;
+}
+
+nav li a {
+	color: black;
+	text-decoration: none;
+}
+
+nav li a:hover {
+	color: #B1663C;
+}
+
+#introduction {
+	display: flex;
+	align-items: center;
+}
+#introduction figure {
+	flex: 1
+}
+#introduction img {
+	display: block;
+	margin: auto;
+	width: 80%;
+}
+
+#introduction article {
+	flex: 1
+}
+#introduction h2 {
+	margin-bottom: 1em;
+}
+
+#introduction p {
+	margin-bottom: 0.5em;
+}
+
+#portfolio h2 {
+	text-align: center;
+	margin-bottom: 1em;
+}
+.gallery {
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 20px;
+	margin: auto;
+}
+
+.gallery img {
+	width: 305px;
+	height: 407px;
+}
+#contact {
+	width: 50%;
+	margin: auto;
+}
+#contact > * {
+	text-align: center;
+
+}
+#contact h2{
+	margin-bottom: 20px;
+}
+#contact form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#contact input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#contact label {
+	margin: 2em 0 1em 0;
+}
+#contact textarea {
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+input[type="submit"]{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+}
+
+footer {
+	width: 1440px;
+	display: flex;
+	left: 50%;
+	transform: translateX(-50%);
+	position: relative;
+	justify-content: end;
+    background-color: white;
+}
+
+footer nav ul {
+	display: flex;
+	justify-content: flex-end;
+	margin: 2em
+}
+
+/***** Boutons filtres travaux *****/
+
+#portfolio .btn-filters {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2em;
+	height: 37px;
+}
+
+.btn-filters button {
+	border-radius: 60px;
+	border: 1px #1D6154 solid;
+	color: #1D6154;
+	
+	margin-right: 20px;
+	font-weight: 700;
+	font-size: 16px;
+	text-align: center;
+	font-family: 'Syne';
+	background-color: transparent;
+}
+
+.btn-filters button.active {
+	background-color: #1D6154;
+	color:white
+}
+
+.btn-filters .Tous {
+	width: 8.8%;
+}
+
+.btn-filters .Objets {
+	width: 8.8%;
+}
+
+.btn-filters .Appartements {
+	width: 13.8%;
+}
+
+
+/********** Page de connection **********/
+
+body.page-connection {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+body.page-connection .login {
+	font-weight: 700;
+}
+
+body.page-connection main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1;
+}
+
+body.page-connection main h2 {
+	margin-top: 142px;
+}
+
+body.page-connection main form {
+	width: 33.3%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 69px;
+}
+
+body.page-connection main form label {
+	font-weight: 500;
+}
+
+body.page-connection main form input {
+	height: 41px;
+	margin-bottom: 30px;
+}
+
+body.page-connection main form button {
+	margin-bottom: 30px;
+	border-radius: 60px;
+	height: 36px;
+	width: 47.2%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 26.4%;
+	
+	font-weight: 700;
+	font-family: "Syne";
+	color: white;
+	background-color: #1D6154;
+	border: 1px #1D6154 solid;
+}
+
+body.page-connection main p {
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+body.page-connection footer {
+	max-width: 1440px;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background-color: white;
+}
+
+body.page-connection footer nav ul {
+	padding-right: 30px;
+}
+
+
+/********** Page administrateur **********/
+
+/** Top Bar **/
+#editionmode-topbar {
+	background-color: black;
+	width: 1440px;
+	height: 59px;
+	position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#editionmode-topbar a {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	text-indent: 10px;
+	text-decoration: none;
+	color: white;
+}
+
+#portfolio .modal-links {
+	display: flex;
+	justify-content: center;
+	padding-top: 50px;
+}
+
+#portfolio .modal-links a {
+	display: flex;
+	text-indent: 5px;
+	align-items: baseline;
+
+	text-decoration: none;
+	color: inherit;
+	margin-top: 10px;
+	margin-left: 20px;
+	height: 18px;
+}
+
+
+
+
+/** Modale **/
+
+.modalDialog {
+	width: 35.2%;
+	max-width: 630px;
+	height: 64.4%;
+	border-radius: 10px;
+	border: none;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.modalDialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal-1 {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;	
+	align-items: center;
+}
+
+.header-modal {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+
+.btn-top-modal {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.btn-top-modal button {
+	border: none;
+	background-color: transparent;
+	margin: 0;
+}
+
+.modal-1 .close-modal {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+
+.modalDialog header h3 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 30px 0;
+	height: 30px;
+	font-size: 26px;
+	font-weight: 400;
+}
+
+.main-modal-1 {
+	width: 420px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	overflow: auto;
+	box-sizing: border-box;
+	gap: 6px;
+	position: relative;
+	border-bottom: 1px solid #B3B3B3;
+	padding-bottom: 20px;
+}
+
+.main-modal-1 figure {
+	height: 102px;
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.main-modal-1 figure img {
+	width: 76px;
+	height: 102px;
+}
+
+.main-modal-1 figure button {
+	width: 17px;
+	height: 17px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 2px;
+}
+
+.modalDialog footer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.modalDialog footer .btn-bottom-modal {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 36px;
+	width: 237px;
+	border-radius: 60px;
+	border: none;
+	font-family: "Syne";
+	color: white;
+	background-color: #1D6154;
+	margin: 20px;
+}
+
+
+
+
+.modal-2 {
+	flex-direction: column;
+}
+
+.modal-2 header h3 {
+	margin: 13px;
+}
+
+.main-modal-2 {
+	display: flex;
+	width: 420px;
+	height: 416px;
+	box-sizing: border-box;
+	border-bottom: 1px solid #B3B3B3;
+	padding-bottom: 20px;
+	margin: auto;
+}
+
+.main-modal-2 form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.work-photo-add {
+	width: 100%;
+	height: 169px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: #E8F1F6;
+	margin-top: 20px;
+	align-items: center;
+	gap: 10px;
+}
+
+.work-photo-add i {
+	font-size: 76px;
+	color: #B9C5CC;
+}
+
+.work-photo-add label {
+	background-color: #CBD6DC;
+	width: 173px;
+	height: 36px;
+	border-radius: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 500;
+}
+
+.work-photo-add p {
+	font-size: 10px;
+}
+
+#file-preview {
+	position: absolute;
+	object-fit: cover;
+	height: 169px;
+	width: 129px;
+}
+
+.work-title, .work-categories {
+	display: flex;
+	flex-direction: column;
+	
+}
+
+.work-title label, .work-categories label {
+	font-weight: 500;
+}
+
+.work-title input, .work-categories select {
+	height: 51px;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: none;
+	margin-top: 10px;
+	text-indent: 10px;
+}
+
