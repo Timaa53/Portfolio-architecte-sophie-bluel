@@ -72,7 +72,7 @@ if (tokenOk) {
 // Modal
 
 // Fonctions
-import {galleryWorks} from "./Cortin_Andy_5_works_16122024.js"
+import {galleryWorks} from "./works.js"
 
 function mainContentDivModal(divclass, classListMainModal, hiddenmodal2) {
     const modal = document.querySelector(".modalDialog");
@@ -191,7 +191,6 @@ function figuresContentModal1() { // Création des figures de la modal-1 dans ma
                     })
                     .then((response) => {
                         if (response.ok) {
-                            console.log (`Elément ${figure.id} supprimé!`)
                             figure.remove();
                             galleryWorks();
                         }else {
@@ -251,11 +250,6 @@ function formModal2() {
 
     inputPhoto.addEventListener ("change", function () {
         const file = this.files[0];
-
-
-        if (this.files.length > 0) {
-            console.log("Fichier sélectionné : " + this.files[0].name);
-        };
 
         if (file.type !== "image/png" && file.type !== "image/jpeg") {
             alert("Formats acceptés: PNG ou JPG");
@@ -376,7 +370,6 @@ function footerButtonModal2() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log("Nouvel ajout effectué: ", data);
 
             galleryWorks();
             figuresContentModal1();

@@ -22,7 +22,7 @@ formListener.addEventListener("submit", async (event) => {
       .then(data => {
         // Stockage token et redirection homepage
         localStorage.setItem('token', data.token);
-        window.location.href = "/FrontEnd/Cortin_Andy_1_index_16122024.html";
+        window.location.href = "/FrontEnd/index.html";
       })
       .catch(error => {alert(error.message);});
 });
