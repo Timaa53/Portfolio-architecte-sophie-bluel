@@ -58,7 +58,7 @@ fetch("https://sophie-bluel-architecte-5xpa.onrender.com/api/categories",)
 .then(response => response.json())
 .then((data) => {
     const categories = [{ id: null, name: "Tous" }, ...data];
-    const figures = document.querySelectorAll(".gallery figure");
+    
 
     for (const category of categories) {
         const buttonsFilter = creerFiltreBouton(category)
@@ -71,7 +71,8 @@ fetch("https://sophie-bluel-architecte-5xpa.onrender.com/api/categories",)
                 btn.classList.remove("active");
             }
             buttonsFilter.classList.add("active");
-
+            const figures = document.querySelectorAll(".gallery figure");
+            
             // Tri dynamique des travaux
             for (const figure of figures) {
                 if (category.id === null || figure.id === String(category.id)) {
