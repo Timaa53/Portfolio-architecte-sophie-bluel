@@ -9,7 +9,7 @@ formListener.addEventListener("submit", async (event) => {
     }
 
 
-    fetch("https://sophie-bluel-architecte-5xpa.onrender.com/api/users/login", {
+    fetch("http://localhost:5678/api/users/login", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(emailMdp)

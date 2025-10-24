@@ -16,6 +16,6 @@ email: sophie.bluel@test.tld
 password: S0phie 
 ```
 Lien pour voir la
-[documentation Swagger](https://sophie-bluel-architecte-5xpa.onrender.com/api-docs/)
+[documentation Swagger](https:http://localhost:5678/api-docs/)
 
 Pour lire la documentation, utiliser Chrome ou Firefox

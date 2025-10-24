@@ -38,7 +38,7 @@ export function galleryWorks () {
     const containerGallery = document.querySelector(".gallery");
     containerGallery.innerHTML = "";
 
-    fetch("https://sophie-bluel-architecte-5xpa.onrender.com/api/works",)
+    fetch("http://localhost:5678/api/works",)
     .then(response => response.json())
     .then((data) => {
 
@@ -54,7 +54,7 @@ galleryWorks ();
 
 
 // Récupération des catégories, création des boutons et tri des travaux
-fetch("https://sophie-bluel-architecte-5xpa.onrender.com/api/categories",)
+fetch("http://localhost:5678/api/categories",)
 .then(response => response.json())
 .then((data) => {
     const categories = [{ id: null, name: "Tous" }, ...data];
