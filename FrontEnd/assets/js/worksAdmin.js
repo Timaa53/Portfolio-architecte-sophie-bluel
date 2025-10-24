@@ -161,7 +161,7 @@ function figuresContentModal1() { // Création des figures de la modal-1 dans ma
     mainModal1.innerHTML = "";
 
     // Création figure
-    fetch('http://localhost:5678/api/works',)
+    fetch('https://sophie-bluel-tdrq.onrender.com/api/works',)
     .then(response => response.json())
     .then((data) => {
     
@@ -182,7 +182,7 @@ function figuresContentModal1() { // Création des figures de la modal-1 dans ma
             figure.appendChild(removeWorksBtn);
             
             removeWorksBtn.addEventListener ("click", () => {
-                    fetch(`http://localhost:5678/api/works/${figure.id}`, {
+                    fetch(`https://sophie-bluel-tdrq.onrender.com/api/works/${figure.id}`, {
                         method: "DELETE",
                         headers: {
                             "Content-Type": "application/json",
@@ -313,7 +313,7 @@ function formModal2() {
     selectCategories.required = true;
     workCategories.appendChild(selectCategories);
 
-    fetch("http://localhost:5678/api/categories")
+    fetch("https://sophie-bluel-tdrq.onrender.com/api/categories")
     .then(response => response.json())
     .then((data) => {
         const categories = [{ id: "", name: ""}, ...data];
@@ -363,7 +363,7 @@ function footerButtonModal2() {
             formData.append("title", titleInput.value);
             formData.append("category", parseInt(categoryInput.value, 10));
 
-        fetch("http://localhost:5678/api/works", {
+        fetch("https://sophie-bluel-tdrq.onrender.com/api/works", {
         method: "POST",
         headers: {"Authorization": `Bearer ${localStorage.getItem("token")}`},
         body: formData
