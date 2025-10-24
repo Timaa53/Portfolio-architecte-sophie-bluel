@@ -7,23 +7,26 @@ exports.findAll = async (req, res) =>  {
 }
 
 exports.create = async (req, res) => {
-	const host = req.get('host');
-	const title = req.body.title;
-	const categoryId = req.body.category;
-	const userId = req.auth.userId;
-	const imageUrl = `${req.protocol}://${host}/images/${req.file.filename}`;
-	try{
-		const work = await Works.create({
-			title,
-			imageUrl,
-			categoryId,
-			userId
-		})
-		return res.status(201).json(work)
-	}catch (err) {
-		return res.status(500).json({ error: new Error('Something went wrong') })
-	}
-}
+  	const BASE_URL = process.env.BASE_URL || "https://sophie-bluel-architecte-5xpa.onrender.com";
+
+  	const title = req.body.title;
+  	const categoryId = req.body.category;
+  	const userId = req.auth.userId;
+
+  	const imageUrl = `${BASE_URL}/images/${req.file.filename}`;
+
+  	try {
+    	const work = await Works.create({
+      		title,
+      		imageUrl,
+      		categoryId,
+      		userId,
+    	});
+    	return res.status(201).json(work);
+  	} catch (err) {
+    	return res.status(500).json({ error: new Error("Something went wrong") });
+  	}
+};
 
 exports.delete = async (req, res) => {
 	try{
