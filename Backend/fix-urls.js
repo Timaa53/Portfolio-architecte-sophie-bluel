@@ -1,3 +1,4 @@
+// Backend/fix-urls-mlzc.js
 require('dotenv').config();
 const db = require('./models');
 
@@ -7,14 +8,14 @@ const db = require('./models');
       UPDATE works
       SET imageUrl = REPLACE(
         imageUrl,
-        'http://localhost:5678',
-        'https://sophie-bluel-tdrq.onrender.com'
+        'https://sophie-bluel-tdrq.onrender.com/images',
+        'https://sophie-bluel-mlzc.onrender.com/images'
       )
-      WHERE imageUrl LIKE 'http://localhost:5678%';
     `);
-    console.log('URLs corrigées dans la base !');
+
+    console.log('URLs mises à jour avec succès ! Résultat SQL:', result);
   } catch (e) {
-    console.error('Erreur:', e);
+    console.error('Erreur lors de la mise à jour des URLs:', e);
   } finally {
     await db.sequelize.close();
     process.exit(0);

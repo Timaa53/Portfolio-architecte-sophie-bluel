@@ -16,6 +16,6 @@ email: sophie.bluel@test.tld
 password: S0phie 
 ```
 Lien pour voir la
-[documentation Swagger](https://sophie-bluel-tdrq.onrender.com/api-docs/)
+[documentation Swagger](https://sophie-bluel-mlzc.onrender.com/api-docs/)
 
 Pour lire la documentation, utiliser Chrome ou Firefox
